@@ -1,0 +1,36 @@
+{% extends 'main/base.html' %}
+{% load static %}
+<html>
+<head>
+    {% block title %} Home {% endblock %}
+</head>
+
+<body>
+    {% block promotionalimage %}
+        <div style="display:inline">
+            <img id="promotion_logo" src="{% static 'main/images/promotion_logo_big.png' %}" alt="promotion_logo">
+        </div>
+    {% endblock %}
+
+    {% block content %}
+        <!-- profile dropdown here to be added -->
+    {% endblock %}
+
+    {% block menubuttons %}
+            <button id="moviesMenuButton">
+                Movies
+            </button>
+            <br><br>
+            <button id="seriesMenuButton">
+                TV Shows
+            </button>
+            <br>
+            <br>
+            <button id="songsMenuButton">
+                Songs
+            </button>
+    {% endblock %}
+
+
+</body>
+</html>

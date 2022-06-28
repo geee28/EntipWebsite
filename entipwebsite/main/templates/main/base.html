@@ -1,0 +1,105 @@
+{% load static %}
+<html lang='en'>
+<head>
+    <meta charset="UTF-8">
+        <title>
+        {% block title %} Entip {% endblock %}
+        </title>
+
+    {% load static %}
+    <link href="{% static 'css/bootstrap.min.css' %}" >
+    <script src="{% static 'bootstrap.min.js' %}"></script>
+</head>
+
+<style>
+
+    body{
+        margin: 0%;
+        padding:0%;
+        display:inline;
+    }
+    .navbar{
+        background-color: #494D72;
+        height: 115px;
+        margin: 0%;
+        padding:0%;
+        border: 1px solid rgb(0,0,0);
+        border-radius: 0px 0px 30px 30px;
+    }
+    #navbarlogo {
+        padding-left : 20px;
+        padding-top : 10px;
+        width: 100px;
+        height: 80px;
+    }
+    #navbartitle {
+        padding-left : 15px;
+    }
+    #navbartagline {
+        padding-left: 300px;
+    }
+    #promotion_logo {
+        height: 580px;
+        width: 550px;
+        padding-left: 70px;
+    }
+
+    #moviesMenuButton, #seriesMenuButton, #songsMenuButton {
+        background-color: #494D72;
+        border: none;
+        border-radius: 36px;
+        width: 360px;
+        height: 120px;
+        color: #ffffff;
+        font-family: 'Playfair Display';
+        font-weight: 550;
+        font-size: 27px;
+        text-align: center;
+        display:inline;
+    }
+    #moviesMenuButton:hover, #seriesMenuButton:hover, #songsMenuButton:hover {
+        background-color: #000000;
+        cursor:pointer;
+
+    }
+
+    #moviesMenuButton {
+        margin-top: 140px;
+        margin-left: 300px;
+        position: absolute;
+    }
+    #seriesMenuButton {
+        margin-top: -320px;
+        margin-left: 920px;
+        position: absolute;
+    }
+    #songsMenuButton {
+        margin-top: -215px;
+        margin-left: 920px;
+        position: absolute;
+    }
+
+</style>
+
+<body>
+
+    <!--<img src="{% static 'main/images/entip_logo.png' %}" alt="entip_logo"/> -->
+    <nav class="navbar bg-light">
+        <div class="container-fluid">
+            <img id = "navbarlogo" src="{% static 'main/images/entip_logo.png' %}" alt="logo">
+            <img id = "navbartitle" src="{% static 'main/images/entip_title.png' %}" alt="Entip">
+            <img id = "navbartagline" src="{% static 'main/images/entip_tagline.png' %}" alt="Your entertainment tipping system">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </nav>
+
+    {% block promotionalimage %}
+    {% endblock %}
+
+    {% block menubuttons %}
+    {% endblock %}
+
+</body>
+
+</html>
