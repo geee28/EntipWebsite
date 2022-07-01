@@ -17,6 +17,14 @@ def home(response):
     return render(response, "main/home.html", {})
 
 
+def series(response):
+    return render(response, "main/series.html", {})
+
+
+def songs(response):
+    return render(response, "main/songs.html", {})
+
+
 def movies(response):
     recommended_movies_list = []
     if response.method == 'POST':
@@ -48,7 +56,7 @@ def movies(response):
 
 def single_movie_recommendation(model_movies_df, moviename, headnum, flag):
     if flag == 'multiple':
-        model_movies_df['tags'] = model_movies_df['genres'] + model_movies_df['keywords']
+        model_movies_df['tags'] = model_movies_df['genres'] + model_movies_df['keywords'] + model_movies_df['overview']
     if flag == 'single':
         model_movies_df['tags'] = model_movies_df['overview'] + model_movies_df['genres'] + model_movies_df[
             'keywords'] + model_movies_df['cast'] + model_movies_df['crew']

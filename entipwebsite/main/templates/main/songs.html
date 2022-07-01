@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% extends "main/base.html" %}
+{% load static %}
+{% block title %} Songs {% endblock %}
+
+{% block content %}
+    <button class = ""  style="padding: 0.8%; background-color:#494D72; border-color: #FFFFFF; border-radius: 15px; float:right; margin-top:1%; margin-right: 3%;">
+        <a href="#">
+            <img src="{% static 'main/images/watchlist_navbar.png' %}" alt="watchlist" width="70%" height="10%">
+        </a>
+        <em class="fa fa-caret-down"></em>
+    </button>
+{% endblock %}
+
+
+{% block songs %}
+    <h1 align="center" style="color: #494d72">
+        SONGS RECOMMENDATION
+    </h1>
+    <div name="songs_work" align="center">
+        <img src="{% static 'main/images/work_in_progress.gif' %}" alt="Work in progress" width="30%"/>
+        <h2 style="color:#494d72" align="center">Work in progress</h2>
+    </div>
+{% endblock %}

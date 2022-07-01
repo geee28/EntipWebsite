@@ -16,11 +16,11 @@
     <h1 align="center" style="color: #494d72">
         MOVIES RECOMMENDATION
     </h1>
-    <form method="post" action="#" onsubmit="return validateForm()">
+    <form method="post" action="#">
         {% csrf_token %}
         <div class="wrapper">
             <div id="survey_options">
-                <input list="movieslist" name="user_movies[]" class="user_movies" placeholder="Enter movie name" required/>
+                <input id="user_movie_input" list="movieslist" name="user_movies[]" class="user_movies" placeholder="Enter movie name" required oninvalid="alert('Why ya')"/>
                 <datalist id="movieslist">
                 </datalist>
             </div>
@@ -34,7 +34,7 @@
                 <br><br>
             </div>
             <button id="recommendBtn" class="submit" type="submit" name="recommendmovies" values="" style="border:none; padding:0%; margin-left:35%; background-color: #FFFFFF; width:30%; cursor:pointer" >
-                    <img src="{% static 'main/images/recommendBtn.png' %}" alt="Remove Users" width="30%"/>
+                    <img src="{% static 'main/images/recommendBtn.png' %}" alt="Recommend" width="30%"/>
             </button>
         </div>
         <div name="output" align="center">
@@ -77,6 +77,7 @@
         }
         function readFileMovieNames(file)
         {
+            var movienames_array= []
             var rawFile = new XMLHttpRequest();
             rawFile.open("GET", file, false);
             rawFile.onreadystatechange = function ()
@@ -87,7 +88,7 @@
                     {
                         var allText = rawFile.responseText;
                         //console.log(allText);
-                        const movienames_array = allText.split(/\r?\n/)
+                        movienames_array = allText.split(/\r?\n/)
                         //console.log(movienames_array);
                         var list = document.getElementById('movieslist');
                         movienames_array.forEach(function(item){
@@ -97,11 +98,31 @@
                         });
                     }
                 }
-
             }
             rawFile.send(null);
         }
-
         readFileMovieNames('../../static/main/database/all_movie_names.txt');
+
+        var movieinputs = document.getElementsByClassName('user_movies');
+        for (var i = 0; i < movieinputs.length; i++) {
+            movieinputs[i].addEventListener('change',inputvalidate);
+        }
+
+        function inputvalidate(event){
+            if(event){
+                event.preventDefault();
+            }
+            var optionFound = false;
+            var moviedatalist = document.getElementById('movieslist');
+            for (var j = 0; j < moviedatalist.options.length; j++) {
+                if (this.value == moviedatalist.options[j].value) {
+                    optionFound = true;
+                    break;
+                }
+            }
+            if(!optionFound){
+                alert("Enter a movie from the list provided");
+            }
+        }
     </script>
 {% endblock %}
